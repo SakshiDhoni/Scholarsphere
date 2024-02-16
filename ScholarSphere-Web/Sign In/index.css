@@ -1,0 +1,240 @@
+.arrow-button-icon {
+  width: 26px;
+  height: 26px;
+  position: relative;
+}
+.arrowbutton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 10px;
+}
+.sign-up {
+  margin: 0;
+  width: 200px;
+  position: relative;
+  font-size: inherit;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arrowbutton-parent,
+.frame-wrapper {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+.arrowbutton-parent {
+  width: 707px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+.frame-wrapper {
+  align-self: stretch;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.phone-number {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  letter-spacing: 0.2px;
+  line-height: 25px;
+  font-weight: 400;
+  font-family: inherit;
+}
+.input-text,
+.placeholder {
+  display: flex;
+  align-items: center;
+}
+.placeholder {
+  width: 120px;
+  border: 0;
+  outline: 0;
+  font-family: var(--text-large-semibold);
+  font-size: var(--text-small-regular-size);
+  background-color: transparent;
+  height: 25px;
+  position: relative;
+  letter-spacing: 0.2px;
+  line-height: 25px;
+  color: var(--neutral-500);
+  text-align: left;
+}
+.input-text {
+  align-self: stretch;
+  border-radius: var(--br-3xs);
+  background-color: rgba(241, 245, 249, 0.4);
+  border: 1px solid var(--neutral-300);
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 12px var(--padding-base);
+}
+.frame-parent,
+.secondary-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.secondary-frame {
+  width: 327px;
+  align-items: flex-start;
+  gap: 22px;
+  text-align: left;
+  font-size: 20px;
+  color: var(--neutral-900);
+}
+.frame-parent {
+  width: 771px;
+  align-items: flex-end;
+  gap: var(--gap-110xl);
+}
+.button-instance {
+  margin: 0;
+  height: 28px;
+  width: 24px;
+}
+.terms-and-conditions {
+  color: #4178d4;
+}
+.span {
+  color: #111334;
+}
+.i-agree-with-container {
+  flex: 1;
+  position: relative;
+  letter-spacing: 0.2px;
+  line-height: 22px;
+  display: inline-block;
+  min-width: 185px;
+}
+.nested-frame,
+.nested-frame-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.nested-frame {
+  width: 327px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0 1px 0 0;
+  gap: 17px;
+}
+.nested-frame-wrapper {
+  width: 769px;
+  justify-content: flex-end;
+  padding: 0 0 11px;
+  text-align: left;
+  font-size: var(--very-small-regular-size);
+  color: var(--neutral-500);
+}
+.button-large {
+  width: 264px;
+  position: relative;
+  font-size: var(--text-large-semibold-size);
+  line-height: 24px;
+  font-weight: 600;
+  font-family: var(--text-large-semibold);
+  color: var(--shades-0);
+  text-align: center;
+  display: inline-block;
+}
+.button,
+.large-button-instance {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+.button {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-base);
+  background-color: #52b6df;
+  width: 328px;
+  border-radius: var(--br-3xs);
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.button:hover {
+  background-color: #1f82ad;
+}
+.large-button-instance {
+  width: 771px;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.sign-in1 {
+  width: 100%;
+  position: relative;
+  background-color: var(--shades-0);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 128px 463px 178px var(--padding-xl);
+  box-sizing: border-box;
+  gap: var(--gap-143xl);
+  letter-spacing: normal;
+  text-align: center;
+  font-size: 26px;
+  color: var(--shades-100);
+  font-family: var(--text-large-semibold);
+}
+@media screen and (max-width: 1200px) {
+  .sign-in1 {
+    gap: var(--gap-143xl);
+    padding-right: 231px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .frame-parent {
+    gap: var(--gap-110xl);
+  }
+}
+@media screen and (max-width: 750px) {
+  .sign-in1 {
+    gap: var(--gap-143xl);
+    padding-right: 115px;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .sign-up {
+    font-size: 21px;
+    line-height: 19px;
+  }
+  .phone-number {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .frame-parent {
+    gap: var(--gap-110xl);
+  }
+  .sign-in1 {
+    gap: var(--gap-143xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+}
+
+/* ... Your existing CSS rules remain unchanged ... */
+
+/* Add this new CSS rule for the non-clickable state */
+.non-clickable {
+  pointer-events: none;
+  opacity: 0.5;
+}

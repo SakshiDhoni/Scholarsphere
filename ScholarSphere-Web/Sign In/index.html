@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="sign-in1">
+      <div class="frame-parent">
+        <div class="frame-wrapper">
+          <div class="arrowbutton-parent">
+            <a href="../Onboarding/index.html">
+              <div class="arrowbutton">
+                <img
+                  class="arrow-button-icon"
+                  loading="eager"
+                  alt=""
+                  src="./public/arrowbutton.svg"
+                />
+              </div>
+            </a>
+            <h1 class="sign-up">Sign up/Sign in</h1>
+          </div>
+        </div>
+        <div class="secondary-frame">
+          <h3 class="phone-number">Phone Number</h3>
+          <div class="input-text">
+            <input
+              class="placeholder"
+              placeholder="+91 - xxxxx xxxxx"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="nested-frame-wrapper">
+        <div class="nested-frame">
+          <input id="toggleCheckbox" class="button-instance" type="checkbox" />
+          <div class="i-agree-with-container">
+            <span>I agree with the </span>
+            <span class="terms-and-conditions">terms and conditions</span>
+            <span> and</span>
+            <span class="span"> </span>
+            <span
+              >also the protection of my personal data on this application</span
+            >
+          </div>
+        </div>
+      </div>
+      <a href="../Verify/index.html">
+        
+      <div class="large-button-instance">
+        <button class="button non-clickable">
+          <div class="button-large">Sign Up</div>
+        </button>
+      </div>
+    </div>
+  </a>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleCheckbox = document.getElementById("toggleCheckbox");
+        const signUpButton = document.querySelector(".large-button-instance button");
+    
+        toggleCheckbox.addEventListener("change", function () {
+          if (this.checked) {
+            signUpButton.removeAttribute("onclick");
+            signUpButton.classList.remove("non-clickable");
+          } else {
+            signUpButton.setAttribute("onclick", "return false;");
+            signUpButton.classList.add("non-clickable");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

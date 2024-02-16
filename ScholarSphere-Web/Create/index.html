@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    />
+  </head>
+  <body>
+    <div class="create-profile">
+      <div class="parent-frame">
+        <div class="arrow-button-parent">
+          <a href="../Verify/index.html"> <!-- Add your link here -->
+            <img
+              class="arrow-button-icon"
+              loading="eager"
+              alt=""
+              src="./public/arrowbutton.svg"
+            />
+          </a>
+          <h3 class="create-your-profile">Create your profile</h3>
+        </div>
+      </div>
+      <div class="frame-with-text">
+        <div class="provide-your-profile-picture-a-parent">
+          <div class="provide-your-profile">
+            Provide your profile picture and display your name to make easy
+            delivery
+          </div>
+          <label for="profile-picture" class="ellipse-shape" onclick="triggerFileInput()">
+            <input type="file" id="profile-picture" style="display: none;" onchange="displayImage(this)" accept="image/*"/>
+            <img id="profile-image" src="#" alt="Profile Image" style="display: none;" />
+          </label>
+          <input
+            type="text"
+            class="text" 
+            placeholder="Name"
+          />
+          <button class="button" onclick="continueButtonClicked()">
+            <div class="button-large">Continue</div>
+          </button>
+        </div>
+      </div>
+
+      <script>
+        function triggerFileInput() {
+          document.getElementById("profile-picture").click();
+        }
+
+        function continueButtonClicked() {
+          // Add your logic for the Continue button action or link here
+          // For example, redirect to another page using window.location.href
+          window.location.href = "../";
+        }
+      </script>
+      <script>
+        function triggerFileInput() {
+          document.getElementById("profile-picture").click();
+        }
+      
+        function displayImage(input) {
+          const image = document.getElementById("profile-image");
+          const file = input.files[0];
+      
+          if (file) {
+            const reader = new FileReader();
+      
+            reader.onload = function (e) {
+              image.src = e.target.result;
+              image.style.display = "block";
+            };
+      
+            reader.readAsDataURL(file);
+          }
+        }
+      
+        function continueButtonClicked() {
+          // Add your logic for the Continue button action or link here
+          // For example, redirect to another page using window.location.href
+          window.location.href = "../Home/index.html";
+        }
+      </script>
+      
+    </div>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <header class="verify1">
+      <div class="verify1-inner">
+        <div class="arrow-parent">
+          <a href="../Sign In/index.html">
+            <img
+              class="arrow-icon"
+              loading="eager"
+              alt=""
+              src="./public/arrow.svg"
+            />
+          </a>
+          <h3 class="verification-code">Verification Code</h3>
+        </div>
+      </div>
+      <div class="main-frame">
+        <div class="input-label-parent">
+          <div class="input-label">
+            <div class="enter-the-code">
+              Enter the code sent by SMS to verify your phone number
+            </div>
+          </div>
+          <div class="input">
+            <div class="input-placeholder">
+              <input type="text" class="otp-input" maxlength="1" />
+              <input type="text" class="otp-input" maxlength="1" />
+              <input type="text" class="otp-input" maxlength="1" />
+              <input type="text" class="otp-input" maxlength="1" />
+            </div>
+          </div>
+          <div class="verification-buttons">
+            <button class="verify-button1" onclick="verifyOtp()">
+              <div class="button-large">Verify</div>
+            </button>
+            <b class="resend-code" id="resendCodeBtn" onclick="startResendTimer()">Resend Code</b>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      let countdown;
+      let secondsRemaining = 20;
+
+      function startResendTimer() {
+        document.getElementById("resendCodeBtn").setAttribute("onclick", "");
+        countdown = setInterval(updateTimer, 1000);
+        updateTimer(); // Initial call to display initial seconds
+      }
+
+      function updateTimer() {
+        document.getElementById("resendCodeBtn").innerText = `Resend Code (${secondsRemaining}s)`;
+        secondsRemaining--;
+
+        if (secondsRemaining < 0) {
+          clearInterval(countdown);
+          document.getElementById("resendCodeBtn").innerText = "Resend Code";
+          document.getElementById("resendCodeBtn").setAttribute("onclick", "startResendTimer()");
+          secondsRemaining = 20; // Reset the timer
+        }
+      }
+
+      
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const otpInputs = document.querySelectorAll(".otp-input");
+    
+        otpInputs.forEach((input, index) => {
+          input.addEventListener("input", (event) => {
+            const value = event.target.value;
+    
+            if (value && index < otpInputs.length - 1) {
+              otpInputs[index + 1].focus();
+            }
+          });
+    
+          input.addEventListener("keydown", (event) => {
+            const BACKSPACE_KEY = 8;
+    
+            if (event.keyCode === BACKSPACE_KEY && index > 0) {
+              otpInputs[index - 1].focus();
+            }
+          });
+        });
+      });
+    </script>
+    <script>
+      function verifyOtp() {
+        // Your logic to verify OTP goes here
+        // For now, let's assume OTP verification is successful, and then redirect to the next page
+        alert("OTP Verified! Redirecting to the next page...");
+        window.location.href = "../Create/index.html"; // Replace "your_next_page.html" with the actual URL
+      }
+    </script>
+  </body>
+</html>
+
+
