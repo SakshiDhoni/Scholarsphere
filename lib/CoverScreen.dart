@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'signin.dart';
 
@@ -10,6 +11,8 @@ class CoverPage extends StatefulWidget {
 }
 
 class _CoverPage extends State<CoverPage>{
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +88,7 @@ class _CoverPage extends State<CoverPage>{
                           fontWeight: FontWeight.bold,
                           fontSize: 30),
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 10),
                     Text(
                       "Get an overview of how you are performing and motivate yourself to achieve even more.",
                       maxLines: 2,
@@ -97,7 +100,7 @@ class _CoverPage extends State<CoverPage>{
                           fontSize: 15),
                     ),
 
-        SizedBox(height: 30),
+        //SizedBox(height: 30),
                     ElevatedButton(
                       onPressed: () {
                         print("lates start button");
@@ -108,8 +111,7 @@ class _CoverPage extends State<CoverPage>{
                       },
                       child: const Text('Lets Start'),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue, // Background color
-                        onPrimary: Colors.white, // Text color
+                        foregroundColor: Colors.white, backgroundColor: Colors.blue, // Text color
                         elevation: 5, // Elevation (shadow)
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
@@ -117,7 +119,7 @@ class _CoverPage extends State<CoverPage>{
                         ),
                         padding: EdgeInsets.symmetric(
                             horizontal: 30,
-                            vertical: 20), // Button padding
+                            vertical: 15), // Button padding
                       ),
                     ),
                   ],

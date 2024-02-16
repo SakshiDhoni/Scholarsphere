@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --text-large-semibold: Poppins;
+
+  /* font sizes */
+  --text-large-semibold-size: 17px;
+  --very-small-regular-size: 13px;
+
+  /* Colors */
+  --shades-0: #fff;
+  --secondary-500: #52b6df;
+  --color-black: #000;
+
+  /* Gaps */
+  --gap-150xl: 169px;
+  --gap-47xl: 66px;
+
+  /* Paddings */
+  --padding-xl: 20px;
+  --padding-base: 16px;
+
+  /* Border radiuses */
+  --br-3xs: 10px;
+}

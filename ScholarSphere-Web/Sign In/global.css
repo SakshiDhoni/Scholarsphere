@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --text-large-semibold: Poppins;
+
+  /* font sizes */
+  --text-large-semibold-size: 17px;
+  --very-small-regular-size: 13px;
+  --text-small-regular-size: 15px;
+
+  /* Colors */
+  --shades-0: #fff;
+  --neutral-500: #64748b;
+  --neutral-900: #0f172a;
+  --neutral-300: #cbd5e1;
+  --shades-100: #000;
+
+  /* Gaps */
+  --gap-143xl: 162px;
+  --gap-110xl: 129px;
+
+  /* Paddings */
+  --padding-xl: 20px;
+  --padding-base: 16px;
+
+  /* Border radiuses */
+  --br-3xs: 10px;
+}

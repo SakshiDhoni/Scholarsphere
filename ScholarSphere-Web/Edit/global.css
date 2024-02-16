@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --text-large-semibold: Poppins;
+
+  /* font sizes */
+  --text-large-semibold-size: 17px;
+  --text-small-regular-size: 15px;
+
+  /* Colors */
+  --shades-0: #fff;
+  --secondary-500: #52b6df;
+  --neutral-900: #0f172a;
+  --primary-500: #4178d4;
+  --neutral-300: #cbd5e1;
+  --color-aliceblue: rgba(241, 245, 249, 0.4);
+
+  /* Gaps */
+  --gap-398xl: 417px;
+  --gap-32xl: 51px;
+  --gap-5xs: 8px;
+
+  /* Paddings */
+  --padding-9xl: 28px;
+  --padding-37xl: 56px;
+  --padding-base: 16px;
+  --padding-xs: 12px;
+  --padding-2xs: 11px;
+
+  /* Border radiuses */
+  --br-3xs: 10px;
+}

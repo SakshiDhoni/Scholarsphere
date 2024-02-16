@@ -1,17 +1,25 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:pinput/pinput.dart';
 import 'package:coverpage/Login_profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
+import 'package:pinput/pinput.dart';
+
+import 'SignIn.dart';
+
 
 class MyOtp extends StatefulWidget {
-  const MyOtp({Key? key});
+  final String phoneNumber;
+  const MyOtp({Key? key, required this.phoneNumber}) : super(key:key);
 
   @override
   State<MyOtp> createState() => _MyOtpState();
 }
 
 class _MyOtpState extends State<MyOtp> {
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
   bool codeResent = false;
   int _start = 10;
   late Timer _timer;
@@ -48,11 +56,47 @@ class _MyOtpState extends State<MyOtp> {
     startTimer();
   }
 
+
+  void verificationFailed(FirebaseAuthException e) {
+    if (e.code == 'invalid-phone-number') {
+      print('The provided phone number is not valid.');
+    }
+    // Handle other errors
+  }
+
+  void verificationCompleted(PhoneAuthCredential credential) async {
+    await auth.signInWithCredential(credential);
+
+    // Navigate to the next screen (e.g., MyHome)
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Login_Profile()),
+    );
+  }
+
+  void verifyPhoneNumber() async {
+    try {
+      await auth.verifyPhoneNumber(
+        phoneNumber: widget.phoneNumber,
+        timeout: const Duration(seconds: 60),
+        codeAutoRetrievalTimeout: (String verificationId) {
+
+          // Auto-resolution timed out...
+        },
+        verificationFailed: verificationFailed,
+        verificationCompleted: verificationCompleted, codeSent: (String verificationId, int? forceResendingToken) {  },
+      );
+    } catch (e) {
+      print('Error during phone number verification: $e');
+    }
+  }
+
   @override
   void dispose() {
     _timer.cancel();
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +120,8 @@ class _MyOtpState extends State<MyOtp> {
         color: Color.fromRGBO(234, 239, 243, 1),
       ),
     );
+
+    var code =" ";
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       body: Container(
@@ -114,22 +160,38 @@ class _MyOtpState extends State<MyOtp> {
                     ),
                     SizedBox(height: 30),
                     Pinput(
-                      length: 4,
+                      length: 6,
                       defaultPinTheme: defaultPinTheme,
                       focusedPinTheme: focusedPinTheme,
                       submittedPinTheme: submittedPinTheme,
                       showCursor: true,
-                      onCompleted: (pin) => print(pin),
+                      onChanged: (value){
+                        code = value ;
+                      },
                     ),
                     SizedBox(height: 30),
                     SizedBox(
                       height: 45,
                       width: 200,
                       child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async{
+                          // try{
+                          //   PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: SignIn.verify , smsCode: code);
+                          //
+                          //   // Sign the user in (or link) with the credential
+                          //   await auth.signInWithCredential(credential);
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(builder: (context) => Login_Profile()),
+                          //   );
+                          // }
+                          // catch(e){
+                          //   print("wrong otp : $e");
+                          // }
+
                           Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Login_Profile()),
+                          context,
+                          MaterialPageRoute(builder: (context) => Login_Profile()),
                           );
                         },
                         child: Text(
@@ -137,7 +199,7 @@ class _MyOtpState extends State<MyOtp> {
                           style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
                         ),
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.white,
+                          backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -151,9 +213,37 @@ class _MyOtpState extends State<MyOtp> {
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
                     )
                         : ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        await FirebaseAuth.instance.verifyPhoneNumber(
+                          phoneNumber: widget.phoneNumber,
+                          // ... other verification options
+                          codeSent: (String verificationId, int? resendToken) {
+                            SignIn.verify = verificationId;
+                            // Navigate to MyOtp or handle code resent logic
+                          },
+                          codeAutoRetrievalTimeout: (String verificationId) {},
+                          verificationCompleted: (PhoneAuthCredential phoneAuthCredential) {},
+                           verificationFailed: (FirebaseAuthException e) {
+                          //   if (e.code == 'invalid-phone-number') {
+                          //     print('The provided phone number is not valid.');
+                          //   }
+                            // Handle other errors
+                          },
+                        );
+
                         resetTimer();
                       },
+                      // onPressed: () async {
+                      //   // Skip OTP verification and directly navigate to the login page
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(builder: (context) => Login_Profile()),
+                      //   );
+                      // },
+
+
+
+
                       child: Text(
                         'Resend Code',
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
