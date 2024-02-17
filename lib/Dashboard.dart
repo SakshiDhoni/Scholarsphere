@@ -6,6 +6,8 @@ import 'package:coverpage/ExamMode.dart';
 import 'package:coverpage/Subject.dart';
 import 'package:coverpage/DeafMike.dart';
 
+import 'FillScreen.dart';
+
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
 
@@ -81,7 +83,7 @@ class _Dashboard extends State<Dashboard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Hi, Student',
+                            'Hi, Sakshi',
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                             textAlign: TextAlign.left,
                           ),
@@ -255,25 +257,25 @@ class _Dashboard extends State<Dashboard> {
                                 margin: EdgeInsets.only(left: 20, top: 20, bottom: 20),
                                 child: Column(
                                   children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(100)
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(500),
+                                      child: IconButton(
+                                        icon: Image.asset(
+                                          "assets/images/Look3.jpg",
+                                          fit: BoxFit.cover,
+                                          height: 50,
+                                          width: 50,
+                                        ),
+                                        onPressed: () {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) => Fill())
+                                          );
+                                        },
                                       ),
-                                      child: Image.asset(
-                                        "assets/images/Look3.jpg",
-                                        fit: BoxFit.cover,
-                                        height: 50,
-                                        width: 50,
-                                      ),
-                                      // onTap: () {
-                                      //   Navigator.push(
-                                      //      context,
-                                      //      MaterialPageRoute(builder: (context) => AppLock()),
-                                      //   );
-                                      // }
                                     ),
 
-                                    Text('App\nLock', style: TextStyle(fontSize: 15),)
+                                    Text('App\nLock', style: TextStyle(fontSize: 15),),
+
                                   ],
                                 ),
                               ),
