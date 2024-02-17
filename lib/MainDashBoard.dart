@@ -7,7 +7,10 @@ import 'package:coverpage/Schedule.dart';
 import 'package:coverpage/Mentor.dart';
 
 class MainDashBoard extends StatefulWidget {
-  const MainDashBoard({Key? key}) : super(key: key);
+  final String username;
+
+
+  const MainDashBoard({Key? key, required this.username}) : super(key: key);
 
   @override
   State<MainDashBoard> createState() => _MainDashBoard();
@@ -15,15 +18,19 @@ class MainDashBoard extends StatefulWidget {
 
 class _MainDashBoard extends State<MainDashBoard> {
   int _selectedIndex = 0;
-
+  late List<Widget> _pages;
   get bottomNavigationBar => null;
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      Dashboard(username: widget.username),
+      Schedule(),
+      profile(),
+      Mentor(),
+    ];
+  }
 
-  final List<Widget> _pages = [
-    Dashboard(),
-    Schedule(),
-    profile(),
-    Mentor(),
-  ];
 
   void _onItemTapped(int index) {
     setState(() {

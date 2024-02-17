@@ -1,19 +1,48 @@
+import 'dart:async';
+
 import 'package:coverpage/Mentor.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:coverpage/ExamMode.dart';
 import 'package:coverpage/Subject.dart';
-import 'package:coverpage/AppLock.dart';
+// import 'package:coverpage/AppLock.dart';
 import 'package:coverpage/DeafMike.dart';
+import 'package:flutter/material.dart';
+// import 'package:firebase_database/firebase_database.dart';
+
+// FirebaseDatabase database = FirebaseDatabase.instance;
+// DatabaseReference ref = FirebaseDatabase.instance.ref();
+// final firebaseApp = Firebase.app();
+// final rtdb = FirebaseDatabase.instanceFor(app: firebaseApp, databaseURL: 'https://console.firebase.google.com/project/scholorsphere/database/scholorsphere-default-rtdb/data/~2F');
 
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  final String username;
+  const Dashboard({Key? key, required this.username}) : super(key: key);
 
   @override
   State<Dashboard> createState() => _Dashboard();
 }
 
 class _Dashboard extends State<Dashboard> {
+  String studentName = '';
+  @override
+  void initState() {
+    super.initState();
+    // Fetch student name from Firebase Realtime Database on initialization
+    // DatabaseReference userRef = FirebaseDatabase.instance.ref('${widget.username}');
+
+    // userRef.child('name').once().then((DataSnapshot snapshot) {
+    //   setState(() {
+    //     studentName = snapshot.value.toString();
+    //   });
+    // } as FutureOr Function(Object value)).catchError((error) {
+    //   print("Failed to fetch student name: $error");
+    // });
+
+
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,8 +65,8 @@ class _Dashboard extends State<Dashboard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hi, Student',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                          'Welcome, Sakshi!',
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25,  fontFamily: 'Poppins',),
                           textAlign: TextAlign.left,
                         ),
                         SizedBox(
@@ -45,7 +74,7 @@ class _Dashboard extends State<Dashboard> {
                         ),
                         Text(
                           'Here is your activity today,',
-                          style: TextStyle(color: Color(0xFF545252), fontSize: 15),
+                          style: TextStyle(color: Color(0xFF545252), fontSize: 15,  fontFamily: 'Poppins',),
                           textAlign: TextAlign.left,
                         ),
                       ],
@@ -139,7 +168,7 @@ class _Dashboard extends State<Dashboard> {
                                       fontWeight: FontWeight.bold),),
                                   SizedBox(height: 5),
                                   // Add spacing between Text widgets
-                                  Text('Assignments'),
+                                  Text('Assignments', style: TextStyle(  fontFamily: 'Poppins',),),
                                 ],
                               ),
                             ),
@@ -215,7 +244,7 @@ class _Dashboard extends State<Dashboard> {
                                     ),
         
                                     Text('Exam\nMode',
-                                      style: TextStyle(fontSize: 15),)
+                                      style: TextStyle(fontSize: 15,  fontFamily: 'Poppins',))
                                   ],
                                 ),
                               ),
@@ -282,7 +311,7 @@ class _Dashboard extends State<Dashboard> {
                                       ),
 
         
-                                    Text('App\nLock', style: TextStyle(fontSize: 15),)
+                                    Text('App\nLock', style: TextStyle(fontSize: 15,  fontFamily: 'Poppins',),)
                                   ],
                                 ),
                               ),
@@ -317,7 +346,7 @@ class _Dashboard extends State<Dashboard> {
                                     ),
         
                                     Text('Deaf\nMode',
-                                      style: TextStyle(fontSize: 15),)
+                                      style: TextStyle(fontSize: 15,  fontFamily: 'Poppins')),
                                   ],
                                 ),
                               ),
@@ -342,7 +371,7 @@ class _Dashboard extends State<Dashboard> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Image.asset('assets/images/mentor.png' , height: 40 , width: 40,),
-                                Text('Mentor'),
+                                Text('Mentor' , style: TextStyle(  fontFamily: 'Poppins',),),
 
                               ],
                             ),

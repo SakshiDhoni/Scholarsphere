@@ -55,8 +55,8 @@ class _CoverPage extends State<CoverPage>{
                     IconButton(
                       icon: Image.asset(
                         "assets/images/LOGO.png",
-                        width: 25,
-                        height: 25,
+                        width: 40,
+                        height: 40,
                         fit: BoxFit.fitHeight,
                       ),
                       onPressed: () {},
@@ -67,7 +67,8 @@ class _CoverPage extends State<CoverPage>{
                       style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Poppins'
+                        fontFamily: 'Poppins',
+                          fontSize: 20,
                       ),
                     ),
                   ],
@@ -82,6 +83,7 @@ class _CoverPage extends State<CoverPage>{
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                          fontFamily: 'Poppins',
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 30),
@@ -93,6 +95,7 @@ class _CoverPage extends State<CoverPage>{
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                          fontFamily: 'Poppins',
                           color: Colors.white,
                           fontWeight: FontWeight.w100,
                           fontSize: 15),

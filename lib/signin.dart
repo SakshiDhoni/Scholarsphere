@@ -50,7 +50,7 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 50), // Add some spacing
               Text(
                 "Phone Number",
-                style: TextStyle(color: Colors.black, fontSize: 18),
+                style: TextStyle(color: Colors.black, fontSize: 18,  fontFamily: 'Poppins',),
               ),
               SizedBox(height: 20),
               Container(
@@ -98,7 +98,7 @@ class _SignInState extends State<SignIn> {
                     );
                   }
                       : null,
-                  child: Text('Sign Up', style:TextStyle(color: Color(0xFF034C85))),
+                  child: Text('Sign Up', style:TextStyle(color: Color(0xFF034C85),  fontFamily: 'Poppins',)),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
