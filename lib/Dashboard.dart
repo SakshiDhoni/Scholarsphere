@@ -338,7 +338,7 @@ class _Dashboard extends State<Dashboard> {
                                         ),
                                         onPressed: () {
                                           Navigator.push(context,
-                                              MaterialPageRoute(builder: (context) => DeafMike())
+                                              MaterialPageRoute(builder: (context) => HomePage())
                                           );
                                         },
                                       ),

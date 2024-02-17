@@ -1,141 +1,101 @@
 import 'package:flutter/material.dart';
+import 'package:speech_to_text/speech_to_text.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
 
-class DeafMike extends StatefulWidget {
-  const DeafMike({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<DeafMike> createState() => _DeafMike();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _DeafMike extends State<DeafMike> with TickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
-  late AnimationController _waveController;
-  late Animation<double> _waveAnimation;
+class _HomePageState extends State<HomePage> {
+  final SpeechToText _speechToText = SpeechToText();
+  bool _speechEnabled = false;
+  String _wordsSpoken = '';
+  double _confidenceLevel = 0;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 300),
-    );
-    _scaleAnimation = Tween<double>(
-      begin: 1.0,
-      end: 1.2,
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
-
-    _waveController = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 1000),
-    );
-    _waveAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(
-      CurvedAnimation(
-        parent: _waveController,
-        curve: Curves.easeInOut,
-      ),
-    );
+    _initSpeech();
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    _waveController.dispose();
-    super.dispose();
+  Future<void> _initSpeech() async {
+    _speechEnabled = await _speechToText.initialize();
+    setState(() {});
   }
 
-  void _startRecording() {
-    _controller.forward();
-    _waveController.forward(from: 0.0);
+
+  Future<void> _startListening() async {
+    await _speechToText.listen(onResult: _onSpeechResult);
+    setState(() {
+      _confidenceLevel = 0;
+    });
   }
 
-  void _stopRecording() {
-    _controller.reverse();
+  Future<void> _stopListening() async {
+    await _speechToText.stop();
+    setState(() {});
   }
+
+  void _onSpeechResult(SpeechRecognitionResult result) {
+    setState(() {
+      _wordsSpoken = "${result.recognizedWords}";
+      _confidenceLevel = result.confidence;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Deaf Mode'),
+        title: const Text('Speech to Text'),
+        centerTitle: true,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: GestureDetector(
-        onTapDown: (_) => _startRecording(),
-        onTapUp: (_) => _stopRecording(),
-        onTapCancel: () => _stopRecording(),
-        child: AnimatedBuilder(
-          animation: _controller,
-          builder: (context, child) {
-            return Transform.scale(
-              scale: _scaleAnimation.value,
-              child: CustomPaint(
-                size: Size(60, 60),
-                painter: WaveButtonPainter(
-                  waveAnimation: _waveAnimation,
-                ),
-                child: FloatingActionButton(
-                  onPressed: () {}, // Set to an empty function to disable default onPressed behavior
-                  backgroundColor: Colors.blue,
-                  elevation: 0,
-                  child: Icon(Icons.mic, color: Colors.white),
-                ),
-              ),
-            );
-          },
-        ),
-      ),
-      body: Container(
-        margin: EdgeInsets.only(top: 50, bottom: 10, left: 20, right: 20),
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
-              child: Text(
-                '"Tab to speak!" ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Container(
+                child: Text(
+                  _speechToText.isListening
+                      ? "Listening....."
+                      : _speechEnabled
+                      ? "Press the button to start speaking"
+                      : "Speech not available",
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  _wordsSpoken,
+                  style: const TextStyle(fontSize: 25),
+                ),
+              ),
+            ),
+            if (_speechToText.isNotListening && _confidenceLevel > 0)
+              Text(
+                'Confidence Level: ${(_confidenceLevel * 100).toStringAsFixed(1)}',
+                style:
+                const TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
+              ),
+            const SizedBox(height: 80,)
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: _speechToText.isListening ? _stopListening : _startListening,
+        child: _speechEnabled && _speechToText.isListening
+            ? const Icon(Icons.mic)
+            : const Icon(Icons.mic_none),
+      ),
     );
-  }
-}
-
-class WaveButtonPainter extends CustomPainter {
-  final Animation<double> waveAnimation;
-
-  WaveButtonPainter({required this.waveAnimation});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = Colors.blue
-      ..style = PaintingStyle.fill;
-
-    double center = size.width / 2;
-    double radius = size.width / 2;
-
-    // Draw the circular button
-    canvas.drawCircle(Offset(center, center), radius, paint);
-
-    // Draw the release waves
-    paint.color = Colors.blue.withOpacity(0.3 * (1 - waveAnimation.value));
-    double waveRadius = radius * waveAnimation.value;
-    canvas.drawCircle(Offset(center, center), waveRadius, paint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
   }
 }
