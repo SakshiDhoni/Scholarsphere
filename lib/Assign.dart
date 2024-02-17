@@ -99,11 +99,11 @@ class SubjectPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+
       body: SingleChildScrollView(
         child:
-            Container(
-              margin: EdgeInsets.only(top:80, left: 20 , right: 20 ),
+        Container(
+          margin: EdgeInsets.only(top:80, left: 20 , right: 20 ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[

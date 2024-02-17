@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:coverpage/verification.dart';
 
+import 'Login_profile.dart';
+
 class SignIn extends StatefulWidget {
   const SignIn({Key? key});
+
+  static String verify = " ";
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -10,6 +14,8 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   TextEditingController countrycode = TextEditingController();
+  var phone ='';
+  TextEditingController number = TextEditingController();
   bool isChecked = false;
 
   @override
@@ -50,7 +56,7 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 50), // Add some spacing
               Text(
                 "Phone Number",
-                style: TextStyle(color: Colors.black, fontSize: 18,  fontFamily: 'Poppins',),
+                style: TextStyle(color: Colors.black, fontSize: 18),
               ),
               SizedBox(height: 20),
               Container(
@@ -76,6 +82,11 @@ class _SignInState extends State<SignIn> {
                     SizedBox(width: 10),
                     Expanded(
                       child: TextField(
+                        keyboardType: TextInputType.phone,
+                        controller: number,
+                        onChanged: (value){
+                          phone = value;
+                        },
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: "Phone No.",
@@ -91,14 +102,37 @@ class _SignInState extends State<SignIn> {
                 width: 200,
                 child: ElevatedButton(
                   onPressed: isChecked
-                      ? () {
+                      ? () async{
+                    // await FirebaseAuth.instance.verifyPhoneNumber(
+                    //   phoneNumber: countrycode.text.toString() + number.text.toString(),
+                    //   verificationCompleted: (PhoneAuthCredential credential) {},
+                    //   verificationFailed: (FirebaseAuthException e) {
+                    //     if (e.code == 'invalid-phone-number') {
+                    //       print('The provided phone number is not valid.');
+                    //     }
+                    //
+                    //   },
+                    //   codeSent: (String verificationId, int? resendToken) {
+                    //     SignIn.verify = verificationId ;
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(builder: (context) => MyOtp(phoneNumber: countrycode.text.toString() + number.text.toString())),
+                    //
+                    //     );
+                    //   },
+                    //   codeAutoRetrievalTimeout: (String verificationId) {},
+                    // );
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MyOtp()),
+                      MaterialPageRoute(builder: (context) => Login_Profile()),
                     );
+
                   }
                       : null,
-                  child: Text('Sign Up', style:TextStyle(color: Color(0xFF034C85),  fontFamily: 'Poppins',)),
+
+
+
+                  child: Text('Sign Up', style:TextStyle(color: Color(0xFF034C85))),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
