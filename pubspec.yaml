@@ -21,8 +21,6 @@ version: 1.0.0+1
 environment:
   sdk: '>=3.1.3 <4.0.0'
 
-
-
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
 # consider running `flutter pub upgrade --major-versions`. Alternatively,
@@ -41,6 +39,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   pinput: ^3.0.1
+  firebase_auth: ^4.17.4
   firebase_core: ^2.25.4
   firebase_database: ^10.4.5
 
@@ -100,8 +99,8 @@ flutter:
     - assets/images/tech.png
     - assets/images/art.png
     - assets/images/Subject Icons.png
-    -  assets/images/Subject Icons (1).png
-    -  assets/images/Menu.png
+    - assets/images/Subject Icons (1).png
+    - assets/images/Menu.png
     - assets/images/mentor.png
     - assets/images/Mike.png
     - assets/images/Mike1.png
@@ -121,7 +120,7 @@ flutter:
   fonts:
      - family: Poppins
        fonts:
-         - asset: assets/fonts/Poppins-Black.ttf
+
          - asset: assets/fonts/Poppins-Regular.ttf
            style: italic
   #   - family: Trajan Pro
