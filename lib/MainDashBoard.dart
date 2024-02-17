@@ -7,10 +7,10 @@ import 'package:coverpage/Schedule.dart';
 import 'package:coverpage/Mentor.dart';
 
 class MainDashBoard extends StatefulWidget {
-  final String username;
 
 
-  const MainDashBoard({Key? key, required this.username}) : super(key: key);
+
+  const MainDashBoard({Key? key,}) : super(key: key);
 
   @override
   State<MainDashBoard> createState() => _MainDashBoard();
@@ -24,7 +24,7 @@ class _MainDashBoard extends State<MainDashBoard> {
   void initState() {
     super.initState();
     _pages = [
-      Dashboard(username: widget.username),
+      Dashboard(),
       Schedule(),
       profile(),
       Mentor(),

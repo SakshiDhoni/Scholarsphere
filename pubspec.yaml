@@ -98,8 +98,8 @@ flutter:
     - assets/images/tech.png
     - assets/images/art.png
     - assets/images/Subject Icons.png
-    -  assets/images/Subject Icons (1).png
-    -  assets/images/Menu.png
+    - assets/images/Subject Icons (1).png
+    - assets/images/Menu.png
     - assets/images/mentor.png
     - assets/images/Mike.png
     - assets/images/Mike1.png
@@ -119,7 +119,7 @@ flutter:
   fonts:
      - family: Poppins
        fonts:
-         - asset: assets/fonts/Poppins-Black.ttf
+
          - asset: assets/fonts/Poppins-Regular.ttf
            style: italic
   #   - family: Trajan Pro
