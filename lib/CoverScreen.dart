@@ -67,6 +67,7 @@ class _CoverPage extends State<CoverPage>{
                       style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins'
                       ),
                     ),
                   ],

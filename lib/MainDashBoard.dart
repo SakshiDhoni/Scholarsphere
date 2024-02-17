@@ -1,7 +1,10 @@
+import 'package:coverpage/Mentor.dart';
 import 'package:flutter/material.dart';
 import 'package:coverpage/Dashboard.dart';
 import 'package:coverpage/Subject.dart';
 import 'package:coverpage/profile.dart';
+import 'package:coverpage/Schedule.dart';
+import 'package:coverpage/Mentor.dart';
 
 class MainDashBoard extends StatefulWidget {
   const MainDashBoard({Key? key}) : super(key: key);
@@ -17,8 +20,9 @@ class _MainDashBoard extends State<MainDashBoard> {
 
   final List<Widget> _pages = [
     Dashboard(),
-    Subject(),
+    Schedule(),
     profile(),
+    Mentor(),
   ];
 
   void _onItemTapped(int index) {
@@ -38,13 +42,20 @@ class _MainDashBoard extends State<MainDashBoard> {
             label: 'Dashboard',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.subject),
-            label: 'Subjects',
+            icon: Icon(Icons.schedule),
+            label: 'Schedule',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.edit),
             label: 'Profile',
           ),
+
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.person),
+          //   label: 'Mentor',
+          // ),
+
+
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

@@ -1,3 +1,4 @@
+import 'package:coverpage/Mentor.dart';
 import 'package:flutter/material.dart';
 import 'package:coverpage/ExamMode.dart';
 import 'package:coverpage/Subject.dart';
@@ -267,7 +268,7 @@ class _Dashboard extends State<Dashboard> {
                                     borderRadius: BorderRadius.circular(100)
                                      ),
                                      child: Image.asset(
-                                          "assets/images/look2.png",
+                                          "assets/images/Look3.jpg",
                                           fit: BoxFit.cover,
                                           height: 50,
                                           width: 50,
@@ -301,7 +302,7 @@ class _Dashboard extends State<Dashboard> {
                                       borderRadius: BorderRadius.circular(500),
                                       child: IconButton(
                                         icon: Image.asset(
-                                          "assets/images/mike.png",
+                                          "assets/images/Mike1.png",
                                           fit: BoxFit.cover,
                                           height: 50,
                                           width: 50,
@@ -324,6 +325,29 @@ class _Dashboard extends State<Dashboard> {
         
                             ],
                           ),
+
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Mentor(),
+                            ),
+                          );
+                        },
+                          child:
+                          Container(
+                            margin: EdgeInsets.only(top: 147 , left: 320),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Image.asset('assets/images/mentor.png' , height: 40 , width: 40,),
+                                Text('Mentor'),
+
+                              ],
+                            ),
+                          )
+                      )
 
                         ],
                       )
