@@ -1,15 +1,25 @@
 import 'package:coverpage/MainDashBoard.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:coverpage/MainDashBoard.dart';
+import 'package:firebase_database/firebase_database.dart';
+
+FirebaseDatabase database = FirebaseDatabase.instance;
+DatabaseReference ref = FirebaseDatabase.instance.ref();
+final firebaseApp = Firebase.app();
+final rtdb = FirebaseDatabase.instanceFor(app: firebaseApp, databaseURL: 'https://console.firebase.google.com/project/scholorsphere/database/scholorsphere-default-rtdb/data/~2F');
 
 class Login_Profile extends StatefulWidget {
   const Login_Profile({Key? key}) : super(key: key);
+
 
   @override
   State<Login_Profile> createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Login_Profile> {
+  TextEditingController _nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,6 +89,7 @@ class _ProfileState extends State<Login_Profile> {
                       ),
                       child: Center(
                         child: TextField(
+                          controller: _nameController,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Name",
@@ -93,13 +104,25 @@ class _ProfileState extends State<Login_Profile> {
                     SizedBox(height: 30, width: 10),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MainDashBoard(),
-                          ),
-                        );
-                        print("latest start button");
+                        // Store data in Firebase Realtime Database
+                        DatabaseReference userRef = FirebaseDatabase.instance.ref(_nameController.text);
+
+                        userRef.set({
+
+                            "name":  _nameController.text
+
+                        }).then((_) {
+                          // Navigate to the next screen after data is stored
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MainDashBoard(username: _nameController.text),
+                            ),
+                          );
+                        }).catchError((error) {
+                          // Handle error if data couldn't be stored
+                          print("Failed to store user data: $error");
+                        });
                       },
                       child: const Text('Continue'),
                       style: ElevatedButton.styleFrom(

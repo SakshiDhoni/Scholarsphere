@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  table_calendar: ^3.0.0
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -38,7 +40,7 @@ dependencies:
   pinput: ^3.0.1
   firebase_auth: ^4.17.4
   firebase_core: ^2.25.4
-
+  firebase_database: ^10.4.5
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +52,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  #speech_to_text: ^2.4.1
+  #flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  image_path: "assets/images/LOGO.png"
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -77,7 +86,23 @@ flutter:
     - assets/images/subject.png
     - assets/images/editproifle .png
     - assets/images/Photo Profil.png
-
+    - assets/images/Look3.jpg
+    - assets/images/Math.png
+    - assets/images/phy.png
+    - assets/images/Bio.png
+    - assets/images/basil.png
+    - assets/images/Eco.png
+    - assets/images/chem.png
+    - assets/images/Eng.png
+    - assets/images/geo.png
+    - assets/images/tech.png
+    - assets/images/art.png
+    - assets/images/Subject Icons.png
+    -  assets/images/Subject Icons (1).png
+    -  assets/images/Menu.png
+    - assets/images/mentor.png
+    - assets/images/Mike.png
+    - assets/images/Mike1.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -91,12 +116,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+     - family: Poppins
+       fonts:
+         - asset: assets/fonts/Poppins-Black.ttf
+         - asset: assets/fonts/Poppins-Regular.ttf
+           style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
@@ -105,3 +130,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+

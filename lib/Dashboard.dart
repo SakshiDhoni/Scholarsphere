@@ -1,7 +1,11 @@
+import 'dart:async';
+
+import 'package:coverpage/Mentor.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:coverpage/ExamMode.dart';
 import 'package:coverpage/Subject.dart';
-import 'package:coverpage/AppLock.dart';
+// import 'package:coverpage/AppLock.dart';
 import 'package:coverpage/DeafMike.dart';
 import 'dart:async';
 
@@ -66,6 +70,21 @@ class _Dashboard extends State<Dashboard> {
 
 
 
+
+    // Fetch student name from Firebase Realtime Database on initialization
+    // DatabaseReference userRef = FirebaseDatabase.instance.ref('${widget.username}');
+
+    // userRef.child('name').once().then((DataSnapshot snapshot) {
+    //   setState(() {
+    //     studentName = snapshot.value.toString();
+    //   });
+    // } as FutureOr Function(Object value)).catchError((error) {
+    //   print("Failed to fetch student name: $error");
+    // });
+
+
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,8 +122,8 @@ class _Dashboard extends State<Dashboard> {
                       ],
                     ),
                   ),
-
-
+        
+        
                   // second conatiner
                   Container(
                     margin: EdgeInsets.only(top: 40),
@@ -122,7 +141,7 @@ class _Dashboard extends State<Dashboard> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-
+        
                               padding: const EdgeInsets.only(left: 10, top: 15),
                               // Adjust padding for inner content
                               child: Column(
@@ -140,7 +159,7 @@ class _Dashboard extends State<Dashboard> {
                                 ],
                               ),
                             ),
-
+        
                             Container(
                               height: 80,
                               // Example height value
@@ -223,33 +242,33 @@ class _Dashboard extends State<Dashboard> {
                       ],
                     ),
                   ),
-
+        
                   // thired container
                   Container(
-
+        
                       margin: EdgeInsets.only(top: 20),
                       color: Colors.white,
-
+        
                       child:
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
+        
                           Row(
-
+        
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-
+        
                               Container(
-
+        
                                 margin: EdgeInsets.only(
                                     left: 20, top: 10, bottom: 10),
-
+        
                                 child: Column(
-
+        
                                   children: [
-
-
+        
+        
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(500),
                                       child: IconButton(
@@ -258,29 +277,29 @@ class _Dashboard extends State<Dashboard> {
                                           fit: BoxFit.cover,
                                         ),
                                         onPressed: () {
-
+        
                                           Navigator.push(context,
                                               MaterialPageRoute(builder: (context) => ExamMode())
                                           );
                                         },
                                       ),
                                     ),
-
+        
                                     Text('Exam\nMode',
                                       style: TextStyle(fontSize: 15),)
                                   ],
                                 ),
                               ),
-
+        
                               Container(
-
+        
                                 margin: EdgeInsets.only(left: 20, bottom: 20),
-
+        
                                 child: Column(
-
+        
                                   children: [
-
-
+        
+        
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(500),
                                       child: IconButton(
@@ -291,27 +310,27 @@ class _Dashboard extends State<Dashboard> {
                                           width: 50,
                                         ),
                                         onPressed: () {
-
+        
                                           Navigator.push(context,
                                               MaterialPageRoute(builder: (context) => Subject())
                                           );
                                         },
                                       ),
-
+        
                                     ),
-
+        
                                     Text('Subject', style: TextStyle(fontSize: 15),)
                                   ],
                                 ),
                               ),
-
+        
                               Container(
-
+        
                                 margin: EdgeInsets.only(
                                     left: 20, top: 20, bottom: 20),
-
+        
                                 child: Column(
-
+        
                                   children: [
 
 
@@ -320,7 +339,7 @@ class _Dashboard extends State<Dashboard> {
                                     borderRadius: BorderRadius.circular(100)
                                      ),
                                      child: Image.asset(
-                                          "assets/images/look2.png",
+                                          "assets/images/Look3.jpg",
                                           fit: BoxFit.cover,
                                           height: 50,
                                           width: 50,
@@ -333,28 +352,28 @@ class _Dashboard extends State<Dashboard> {
                                //       }
                                       ),
 
-
+        
                                     Text('App\nLock', style: TextStyle(fontSize: 15),)
                                   ],
                                 ),
                               ),
-
-
+        
+        
                               Container(
-
+        
                                 margin: EdgeInsets.only(
                                     left: 20, top: 20, bottom: 20, right: 20),
-
+        
                                 child: Column(
-
+        
                                   children: [
-
-
+        
+        
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(500),
                                       child: IconButton(
                                         icon: Image.asset(
-                                          "assets/images/mike.png",
+                                          "assets/images/Mike1.png",
                                           fit: BoxFit.cover,
                                           height: 50,
                                           width: 50,
@@ -365,74 +384,75 @@ class _Dashboard extends State<Dashboard> {
                                           );
                                         },
                                       ),
-
+        
                                     ),
-
+        
                                     Text('Deaf\nMode',
                                       style: TextStyle(fontSize: 15),)
                                   ],
                                 ),
                               ),
-
-
-
+        
+        
                             ],
                           ),
                           Container(
-                            decoration: BoxDecoration(
-                              color: Colors.blue[100],
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20),
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20)
+                              decoration: BoxDecoration(
+                                color: Colors.blue[100],
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20)
+                                ),
                               ),
-                            ),
-                            padding: EdgeInsets.symmetric(vertical: 55),
-                            child: Column(
-                              children: [
-                                // Timer Text
-                                Text(
-                                  '${(_secondsRemaining ~/ 60).toString().padLeft(2, '0')}:${(_secondsRemaining % 60).toString().padLeft(2, '0')}',
-                                  style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(height: 10), // Add spacing between timer and icons
-                                // Icons Row
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    IconButton(
-                                      icon: Icon(Icons.play_arrow, color: Colors.white, size: 30),
-                                      onPressed: () {
-                                        setState(() {
-                                          _isPlaying = true;
-                                        });
-                                        _startTimer();
+                              padding: EdgeInsets.symmetric(vertical: 55),
+                              child: Column(
+                                children: [
+                                  // Timer Text
+                                  Text(
+                                    '${(_secondsRemaining ~/ 60).toString().padLeft(2, '0')}:${(_secondsRemaining % 60).toString().padLeft(2, '0')}',
+                                    style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(height: 10), // Add spacing between timer and icons
+                                  // Icons Row
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(Icons.play_arrow, color: Colors.white, size: 30),
+                                        onPressed: () {
+                                          setState(() {
+                                            _isPlaying = true;
+                                          });
+                                          _startTimer();
 
-                                      },
-                                    ),
-                                    IconButton(
-                                      icon: Icon(Icons.stop, color: Colors.white, size: 30),
-                                      onPressed: () {
-                                        _stopTimer();
-                                      },
-                                    ),
-                                    IconButton(
-                                      icon: Icon(Icons.lock_reset_outlined, color: Colors.white, size: 30),
-                                      onPressed: () {
-                                        _resetTimer();
-                                      },
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(Icons.stop, color: Colors.white, size: 30),
+                                        onPressed: () {
+                                          _stopTimer();
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Icon(Icons.lock_reset_outlined, color: Colors.white, size: 30),
+                                        onPressed: () {
+                                          _resetTimer();
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
                           ),
+
 
                         ],
                       )
                   ),
-
+        
+        
                 ],
               ),
             ),

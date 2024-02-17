@@ -58,8 +58,8 @@ class _CoverPage extends State<CoverPage>{
                     IconButton(
                       icon: Image.asset(
                         "assets/images/LOGO.png",
-                        width: 25,
-                        height: 25,
+                        width: 40,
+                        height: 40,
                         fit: BoxFit.fitHeight,
                       ),
                       onPressed: () {},
@@ -70,6 +70,8 @@ class _CoverPage extends State<CoverPage>{
                       style: TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins',
+                          fontSize: 20,
                       ),
                     ),
                   ],
@@ -84,23 +86,25 @@ class _CoverPage extends State<CoverPage>{
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                          fontFamily: 'Poppins',
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 30),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 20),
                     Text(
                       "Get an overview of how you are performing and motivate yourself to achieve even more.",
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                          fontFamily: 'Poppins',
                           color: Colors.white,
                           fontWeight: FontWeight.w100,
                           fontSize: 15),
                     ),
 
-        //SizedBox(height: 30),
+        SizedBox(height: 30),
                     ElevatedButton(
                       onPressed: () {
                         print("lates start button");
@@ -119,7 +123,7 @@ class _CoverPage extends State<CoverPage>{
                         ),
                         padding: EdgeInsets.symmetric(
                             horizontal: 30,
-                            vertical: 15), // Button padding
+                            vertical: 20), // Button padding
                       ),
                     ),
                   ],

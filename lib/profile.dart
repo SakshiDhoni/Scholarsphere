@@ -48,7 +48,7 @@ class _profile extends State<profile> {
             print('Back Button');
             Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MainDashBoard()),
+            MaterialPageRoute(builder: (context) => MainDashBoard( username: 'Sakshi',)),
             );
           },
         ),
